@@ -29,3 +29,40 @@ For myReduce, you'll need to loop through each element, apply the callback funct
 For myForEach, you'll need to loop through each element and execute the callback function for each element.
 
 */
+
+
+     // myMap(callbackFn)
+
+Array.prototype.myMap = function(callbackFn) {
+    const result = [];
+    for (let i = 0; i < this.length; i++) {
+        result.push(callbackFn(this[i], i, this));
+    }
+    return result;
+};
+
+    //myFilter(callbackFn)
+
+Array.prototype.myFilter = function(callbackFn) {
+    const result = [];
+    for (let i = 0; i < this.length; i++) {
+        if (callbackFn(this[i], i, this)) {
+            result.push(this[i]);
+        }
+    }
+    return result;
+};
+ 
+    // myReduce(callbackFn, initialValue?)
+    
+Array.prototype.myReduce = function(callbackFn, initialValue) {
+    let accumulator = initialValue !== undefined ? initialValue : this[0];
+    let startIndex = initialValue !== undefined ? 0 : 1;
+
+    for (let i = startIndex; i < this.length; i++) {
+        accumulator = callbackFn(accumulator, this[i], i, this);
+    }
+    return accumulator;
+};
+
+ 
