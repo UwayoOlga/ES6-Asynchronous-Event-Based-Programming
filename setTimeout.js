@@ -30,17 +30,6 @@ clearTimeout(id);
 console.log('setTimeout is stopped.');
 
 
-
-
-
-
-
-
-
-
-
-
-
 // Write a function to find the longest word in a sentence.
 
 // Return the first longest word in the given string sentence.
