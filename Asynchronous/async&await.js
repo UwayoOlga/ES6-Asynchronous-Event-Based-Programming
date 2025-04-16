@@ -6,7 +6,7 @@ function delay(ms) {
     try {
       console.log("Fetching data...");
       await delay(2000);  
-      const data = { id: 1, name: "Example Data" };
+      const data = { id: 1, name: "Student 1" };
       console.log("Data fetched successfully!");
       return data;  
     } catch (error) {
