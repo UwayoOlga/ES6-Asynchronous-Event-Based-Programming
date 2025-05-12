@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Launch Status</title>
+</head>
+<body>
+   <h1>Launch Status</h1>
+   <h3>Weather Conditions</h3>
+   <div id="weather-conditions">  </div>
+
+    
+   <script>
+      const weatherDiv = document.getElementById('weather-conditions');
+      const weatherApiUrl = 'https://handlers.education.launchcode.org/static/weather.json';
+
+      fetch(weatherApiUrl)
+         .then(response => {
+            if (!response.ok) {
+               throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+         })
+         .then(weatherData => {
+             const temperature = document.createElement('p');
+            temperature.textContent = `Temperature: ${weatherData.temp}°F`;
+
+            const windSpeed = document.createElement('p');
+            windSpeed.textContent = `Wind Speed: ${weatherData.windSpeed} mph`;
+
+            const status = document.createElement('p');
+            status.textContent = `Status: ${weatherData.status}`;
+
+            const precipitation = document.createElement('p');
+            precipitation.textContent = `Chance of Precipitation: ${weatherData.chanceOfPrecipitation}%`;
+
+            const zipcode = document.createElement('p');
+            zipcode.textContent = `Zipcode: ${weatherData.zipcode}`;
+ 
+            weatherDiv.appendChild(temperature);
+            weatherDiv.appendChild(windSpeed);
+            weatherDiv.appendChild(status);
+            weatherDiv.appendChild(precipitation);
+            weatherDiv.appendChild(zipcode);
+         })
+         .catch(error => {
+            console.error('There was a problem fetching the weather data:', error);
+            const errorMessage = document.createElement('p');
+            errorMessage.textContent = 'Failed to load weather information.';
+            weatherDiv.appendChild(errorMessage);
+         });
+   </script>
+</body>
+</html>
