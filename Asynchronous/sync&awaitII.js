@@ -2,9 +2,9 @@ function checkUserAccess(isAuthorized) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (isAuthorized) {
-          resolve("Access granted ✅");
+          resolve("Access granted ");
         } else {
-          reject("Access denied ❌");
+          reject("Access denied ");
         }
       }, 1500); 
     });
